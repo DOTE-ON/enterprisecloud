@@ -1,0 +1,2 @@
+${AnsiColor.BRIGHT_RED}
+Miyano's spring boot banner.
