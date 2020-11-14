@@ -10,6 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EnterpriseCloudApplication {
     public static void main (String[] args) {
         SpringApplication.run (EnterpriseCloudApplication.class, args);
-        System.out.println ("hello, world!");
     }
+
 }

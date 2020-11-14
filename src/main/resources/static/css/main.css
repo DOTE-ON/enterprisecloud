@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'ubuntu';
+    /*细体*/
+    font-weight: bold;
+    src: url('/font/ubuntu.regular.ttf');
+}
+
+body {
+    font-family: ubuntu, serif;
+}
+
+th {
+    width: 500px;
+}

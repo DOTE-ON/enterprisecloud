@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>hello spring boot</title>
+  <script src="/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+<div class="container">
+  This is find all page.
+  <table id="tab">
+  </table>
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    删除
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">信息</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          是否要删除这条信息?
+        </div>
+        <div class="modal-footer">
+          <button id="del" type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="blockquote-footer text-right">
+    Create By Miyano.
+  </footer>
+</div>
+
+<script>
+  $.get(
+          "/account/accounts",
+          (data) => {
+            console.log(data);
+            $("#tab").append("<tr>" + "<th>姓名</th>" + "<th>密码</th>" + "<th>勾选</th>" + "</tr>");
+            $.each(data, (i, val) => {
+              $("#tab").append("<tr>" + "<td>" + val.name + "</td>" + "<td>" + val.phone + "</td><td><input type='checkbox'/></td> " + "</tr>");
+            })
+            
+            // $("#tab").append("<tr>" + "<td> data.account</td>" + "</tr>");
+          }
+  )
+  
+  $("#del").click(function () {
+    $("").parent().remove();
+  })
+</script>
+
+</body>
+</html>
