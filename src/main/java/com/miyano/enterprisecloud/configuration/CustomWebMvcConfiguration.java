@@ -1,6 +1,6 @@
 package com.miyano.enterprisecloud.configuration;
 
-import com.miyano.enterprisecloud.interceptor.SessionInterceptor;
+import com.miyano.enterprisecloud.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -14,12 +14,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class CustomWebMvcConfiguration implements WebMvcConfigurer {
 
     @Bean
-    public SessionInterceptor sessionInterceptor () {
-        return new SessionInterceptor ();
+    public LoginInterceptor sessionInterceptor () {
+        return new LoginInterceptor ();
     }
 
     @Override
     public void addInterceptors (InterceptorRegistry registry) {
-        registry.addInterceptor (sessionInterceptor()).addPathPatterns ("/account/((");
+        registry.addInterceptor (sessionInterceptor()).addPathPatterns ("/pri/**");
     }
 }

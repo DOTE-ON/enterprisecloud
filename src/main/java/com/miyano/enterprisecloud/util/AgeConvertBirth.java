@@ -62,13 +62,11 @@ public class AgeConvertBirth {
 		}*/
 		Date birth;
 		try {
-			birth = new SimpleDateFormat("yyyy-MM-dd").parse("1980-09-30");
+			birth = new SimpleDateFormat("yyyyMMdd").parse("19800930");
 			System.out.println(birthToAge(birth));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 }

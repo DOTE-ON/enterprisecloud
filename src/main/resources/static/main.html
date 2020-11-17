@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div class="container">
+  <div class="row" style="margin-top: 80px;">
+    <div class="card-body text-center">
+      <h3><b>User Info</b></h3>
+      
+      <table id="tab">
+      </table>
+      <button class="btn btn-primary btn-lg" onclick="toAdd ()">Add A User
+      </button>
+    </div>
+  </div>
+  
+  
+  <footer class="blockquote-footer text-right">
+    Create By Miyano.
+  </footer>
+</div>
+
+</body>
+<script>
+  
+  function toAdd() {
+    window.location.href = '/add.html';
+  }
+  
+  $.get(
+          "/account/accounts",
+          (data) => {
+            $("#tab").append("<tr>" + "<th>Account</th>" + "<th>Email</th>" + "<th>Check</th>" + "</tr>");
+            $.each(data, (i, val) => {
+              console.log(val);
+              $("#tab").append("<tr>" + "<td>" + val.account + "</td>" + "<td>" + val.email
+                      + "</td><td><button class=" +
+                      "\"btn\">" + "DELETE" + "</button></td> " + "</tr>");
+            })
+          }
+  )
+  
+  $("table").on("click", ".btn", function () {
+    
+    let curTr = $(this).parent().parent();
+    
+    let account = curTr.children("td:first").text();
+    
+    let uri = "/account/accounts/" + account;
+    
+    $.ajax({
+      url: uri,
+      type: "delete",
+      cache: false,
+      success: (data) => {
+        alert("状态码: " + data.code + ", message: " + data.message + ", 受影响的行数为: " + data.body);
+      }
+    })
+    
+    curTr.remove();
+    
+    // var index=$(this).index();
+    // $(".main .right").find('li').css({"background":"#F4F4F4","color":"#333"});
+    // $(this).css({"background":"#fff","color":"#46c6ff"});
+    // $(".main .left").find('li').hide();
+    // $(".main .left").find('li').eq(index).show();
+    
+  });
+
+
+</script>
+</html>

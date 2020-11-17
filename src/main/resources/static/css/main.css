@@ -5,10 +5,16 @@
     src: url('/font/ubuntu.regular.ttf');
 }
 
-body {
+* {
     font-family: ubuntu, serif;
+}
+
+.main-wrapper {
+    margin-top: 10%;
 }
 
 th {
     width: 500px;
+    font-size: large;
+    color: #e4606d;
 }
