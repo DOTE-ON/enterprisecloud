@@ -11,7 +11,7 @@
     <groupId>com.miyano</groupId>
     <artifactId>enterprisecloud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>enterprise.cloud</name>
     <description>企业云盘</description>
 
@@ -52,12 +52,25 @@
             <version>3.3.0</version>
         </dependency>
 
-<!--        log4j 依赖-->
-<!--        <dependency>-->
-<!--            <groupId>org.slf4j</groupId>-->
-<!--            <artifactId>slf4j-log4j12</artifactId>-->
-<!--            <version>2.0.0-alpha1</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- log4j 依赖 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>2.0.0-alpha1</version>
+        </dependency>
 
     </dependencies>
 

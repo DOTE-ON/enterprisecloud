@@ -75,11 +75,11 @@
     }
     
     let uri = "/account/token";
-    
+    let data = $("#login-form").serialize();
     $.ajax({
-      header: {account: account, password: account},
       type: "get",
       url: uri,
+      data: data,
       cache: false,
       success: (data) => {
         alert("状态码: " + data.code + ", message: " + data.message);

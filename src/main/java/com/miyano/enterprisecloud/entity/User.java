@@ -1,7 +1,5 @@
 package com.miyano.enterprisecloud.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,20 +12,19 @@ public class User implements Serializable {
      * 用户账号
      */
     private String account;
+
     /**
      * 用户密码
      */
     private String password;
 
+    /**
+     * 用户邮箱
+     */
     private String email;
 
-    /**
-     * 用户创建时间
-     */
-    @JsonFormat (pattern = "yyyy-MM-dd")
-    private Date created;
-
-    private static final long serialVersionUID = 1L;
+    public User () {
+    }
 
     public User (String account, String password, String email, Date created) {
         this.account = account;
@@ -35,6 +32,13 @@ public class User implements Serializable {
         this.email = email;
         this.created = created;
     }
+
+    /**
+     * 用户创建时间
+     */
+    private Date created;
+
+    private static final long serialVersionUID = 1L;
 
     public String getAccount() {
         return account;

@@ -1,26 +1,25 @@
 spring:
   application:
-#    项目名称
+    #    项目名称
     name: enterprise-cloud
-
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/miyano?serverTimezone=UTC
-#    username: root
-#    password: miyano12138
-
-  resources:
-#    静态资源位置
-    static-locations: classpath:/static/
-
   devtools:
     restart:
-#      启动热部署
+      #      启动热部署
       enabled: true
-  mvc:
-    view:
-#      .html 后缀
-      suffix: .html
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/miyano?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: miyano12138
+
+mybatis:
+  type-aliases-package: com.example.mybatis.dao
+  mapper-locations: classpath:mapper/*.xml
+
+
 server:
-#  默认端口
+  #  默认端口
   port: 8080
+
+

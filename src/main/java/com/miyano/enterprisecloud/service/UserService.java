@@ -15,6 +15,11 @@ public interface UserService {
      */
     User findUserByAccount (String account);
 
+    /**
+     * 通过账户删除
+     * @param account
+     * @return
+     */
     int deleteUserByAccount (String account);
 
     int alterUser (User input);
@@ -22,4 +27,6 @@ public interface UserService {
     boolean login (String account, String password);
 
     int createUser (User user);
+
+    int updateByPrimaryKeySelective (User user);
 }
