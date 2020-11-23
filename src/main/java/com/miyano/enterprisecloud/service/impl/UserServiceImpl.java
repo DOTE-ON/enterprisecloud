@@ -19,11 +19,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
 
-    @Override
-    public List<User> findUsers () {
-        return null;
-    }
-
     /**
      * 通过账号查找 User 对象
      *
@@ -47,6 +42,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> selectAll () {
+        return userDao.selectAll ();
+    }
+
+    @Override
     public int alterUser (User input) {
         return 0;
     }
@@ -61,7 +61,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int createUser (User user) {
-        return 0;
+        System.out.println ("service user: " + user);
+        return userDao.insert (user);
     }
 
     @Override

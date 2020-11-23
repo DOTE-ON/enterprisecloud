@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Mapper
-@Repository
 public interface UserDao extends MyBatisBaseDao {
 
     /**
@@ -17,11 +16,6 @@ public interface UserDao extends MyBatisBaseDao {
      */
     Integer updateByPrimaryKeySelective (User record);
 
-    /**
-     * 
-     * @param record
-     * @return
-     */
-    @Override
-    int insertSelective (Object record);
+    List<User> selectAll ();
+    int insert (User user);
 }

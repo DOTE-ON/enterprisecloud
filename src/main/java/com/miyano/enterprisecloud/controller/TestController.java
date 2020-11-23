@@ -3,17 +3,22 @@ package com.miyano.enterprisecloud.controller;
 import com.miyano.enterprisecloud.entity.User;
 import com.miyano.enterprisecloud.model.ResponseModel;
 import com.miyano.enterprisecloud.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import redis.clients.jedis.JedisPool;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * @author Miyano
  * @since 2020/11/16 21:57
  */
+@Api(tags = "账户相关操作")
 @RestController
 @RequestMapping("/account")
 public class TestController {
@@ -35,6 +40,7 @@ public class TestController {
      * @return 返回登录对象
      */
     @GetMapping("/token")
+    @ApiOperation ("登录")
     public Object login (String account, String password, HttpServletRequest request) {
         userService.login (account, password);
         return new ResponseModel (301, "Moved Permanently.", "/main.html");
@@ -47,13 +53,14 @@ public class TestController {
      */
     @GetMapping("/accounts")
     public Object findUsers () {
-        User user = new User ();
-        user.setAccount ("rky");
-        user.setEmail ("renkangyang.");
-
-        System.out.println ("userservice.updateByExampleSelective () called");
-        userService.updateByPrimaryKeySelective (user);
-        return userService.findUsers ();
+//        User user = new User ();
+//        user.setAccount ("rky");
+//        user.setEmail ("renkangyang.");
+//
+//        System.out.println ("userservice.updateByExampleSelective () called");
+//        userService.updateByPrimaryKeySelective (user);
+//        return userService.findUsers ();
+        return userService. selectAll();
     }
 
     /**
@@ -75,7 +82,9 @@ public class TestController {
      */
     @PostMapping("/accounts")
     public Object createUser (User user) {
-
+        user.setCreated (new Date ());
+        System.out.println (user);
+        userService.createUser (user);
         return null;
     }
 

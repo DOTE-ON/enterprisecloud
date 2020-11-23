@@ -1,27 +1,42 @@
 package com.miyano.enterprisecloud.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
+// @Api 表示 标识这个类是 swagger 的资源
 /**
  * user
  * @author 
  */
+@ApiModel
 public class User implements Serializable {
+
     /**
      * 用户账号
      */
+    @ApiModelProperty("用户账号")
     private String account;
 
     /**
      * 用户密码
      */
+    @ApiModelProperty("用户密码")
     private String password;
 
     /**
      * 用户邮箱
      */
+    @ApiModelProperty("用户邮箱")
     private String email;
+
+    /**
+     * 用户创建时间
+     */
+    @ApiModelProperty("创建时间")
+    private Date created;
 
     public User () {
     }
@@ -32,11 +47,6 @@ public class User implements Serializable {
         this.email = email;
         this.created = created;
     }
-
-    /**
-     * 用户创建时间
-     */
-    private Date created;
 
     private static final long serialVersionUID = 1L;
 

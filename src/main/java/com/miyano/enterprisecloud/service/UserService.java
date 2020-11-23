@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface UserService {
 
-    List<User> findUsers ();
-
     /**
      * 通过账号查找 User 对象
      * @param account 账号
@@ -21,6 +19,8 @@ public interface UserService {
      * @return
      */
     int deleteUserByAccount (String account);
+
+    List<User> selectAll ();
 
     int alterUser (User input);
 
